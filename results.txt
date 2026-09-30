@@ -1,0 +1,34 @@
+QUANTUMGUARD
+Quantum-Enhanced Digital Payment Fraud Detection
+
+PRACTICE RESULTS
+
+This file contains preliminary practice observations.
+
+Dataset:
+- Synthetic transaction dataset
+- 15 sample transactions
+- No real customer information used
+
+Classical component:
+- Rule-based baseline implemented for initial testing.
+- Risk score is calculated from demonstration transaction features.
+
+Quantum component:
+- Qiskit quantum circuit implemented.
+- Two qubits are used in the practice circuit.
+- Transaction amount is encoded into a rotation angle.
+- Circuit measurement results are collected locally.
+
+Important:
+These are preliminary practice results.
+They must not be presented as final hackathon model results.
+
+During the official hackathon:
+1. Select and prepare the permitted dataset.
+2. Build a proper classical baseline.
+3. Implement the quantum-enhanced approach.
+4. Run experiments.
+5. Record actual metrics.
+6. Compare results.
+7. Update this file with genuine observations.
