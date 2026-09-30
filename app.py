@@ -4,15 +4,12 @@ from flask_cors import CORS
 from fraud_model import analyze_transaction
 from quantum_model import quantum_analysis
 
-
 app = Flask(__name__)
-
 CORS(app)
 
 
 @app.route("/")
 def home():
-
     return jsonify({
         "message": "QuantumGuard backend is running",
         "status": "success"
@@ -21,91 +18,45 @@ def home():
 
 @app.route("/analyze", methods=["POST"])
 def analyze():
-
     data = request.get_json()
 
     if not data:
-
         return jsonify({
             "error": "No transaction data received"
         }), 400
 
+    amount = float(data.get("amount", 0))
+    location = data.get("location", "Unknown")
+    payment_method = data.get("payment_method", "Unknown")
 
-    amount = float(
-        data.get("amount", 0)
+    transaction = {
+        "amount": amount,
+        "location": location,
+        "payment_method": payment_method
+    }
+
+    classical_result = analyze_transaction(transaction)
+    quantum_result = quantum_analysis(amount)
+
+    final_score = (
+        classical_result["risk_score"] * 0.7
+        + quantum_result["quantum_score"] * 0.3
     )
-
-    location = data.get(
-        "location",
-        "Unknown"
-    )
-
-    payment_method = data.get(
-        "paymentMethod",
-        "Unknown"
-    )
-
-
-    # Classical fraud analysis
-
-    classical_result = analyze_transaction(
-        amount=amount,
-        location=location,
-        payment_method=payment_method
-    )
-
-
-    # Quantum component
-
-    quantum_result = quantum_analysis(
-        amount=amount
-    )
-
-
-    # Combine the demonstration results
-
-    final_score = round(
-        (
-            classical_result["risk_score"]
-            +
-            quantum_result["quantum_score"]
-        ) / 2,
-        2
-    )
-
 
     if final_score >= 70:
-
-        final_risk = "HIGH"
-
+        risk_level = "High"
     elif final_score >= 40:
-
-        final_risk = "MEDIUM"
-
+        risk_level = "Medium"
     else:
-
-        final_risk = "LOW"
-
+        risk_level = "Low"
 
     return jsonify({
-
-        "status": "success",
-
-        "classical_analysis": classical_result,
-
-        "quantum_analysis": quantum_result,
-
-        "final_risk_score": final_score,
-
-        "final_risk_level": final_risk
-
+        "classical_score": classical_result["risk_score"],
+        "quantum_score": quantum_result["quantum_score"],
+        "final_score": round(final_score, 2),
+        "risk_level": risk_level
     })
 
 
 if __name__ == "__main__":
-
-    app.run(
-        host="127.0.0.1",
-        port=5000,
-        debug=True
-    )
+    app.run(debug=True)
