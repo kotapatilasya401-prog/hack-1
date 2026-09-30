@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - QuantumGuard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+    <header class="navbar">
+
+        <div class="logo">
+            QuantumGuard
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="user.html">User</a>
+            <a href="admin.html">Admin</a>
+        </nav>
+
+    </header>
+
+
+    <main class="dashboard-page">
+
+        <div class="dashboard-header">
+
+            <p class="tag">BANK ADMINISTRATION</p>
+
+            <h1>Fraud Monitoring Dashboard</h1>
+
+            <p>
+                Monitor transaction alerts and
+                suspicious payment reports.
+            </p>
+
+        </div>
+
+
+        <div class="stats-container">
+
+            <div class="stat-card">
+
+                <h3>Total Transactions</h3>
+
+                <p id="totalTransactions">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Suspicious</h3>
+
+                <p id="suspiciousTransactions">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Blocked</h3>
+
+                <p id="blockedTransactions">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Verified</h3>
+
+                <p id="verifiedTransactions">
+                    0
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <section class="admin-panel">
+
+            <div class="panel-header">
+
+                <h2>Transaction Alerts</h2>
+
+                <button
+                    class="btn secondary-btn"
+                    onclick="clearTransactions()"
+                >
+                    Clear Demo Data
+                </button>
+
+            </div>
+
+
+            <div id="transactionTable">
+
+                <div class="empty-state">
+
+                    <h3>No Transactions Yet</h3>
+
+                    <p>
+                        Transactions submitted from the
+                        user portal will appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
