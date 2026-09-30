@@ -1,0 +1,6 @@
+Flask
+flask-cors
+numpy
+pandas
+scikit-learn
+qiskit~=2.5.2
