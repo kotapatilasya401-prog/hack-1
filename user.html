@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Payment - QuantumGuard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+    <header class="navbar">
+
+        <div class="logo">
+            QuantumGuard
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="user.html">User</a>
+            <a href="admin.html">Admin</a>
+        </nav>
+
+    </header>
+
+
+    <main class="dashboard-page">
+
+        <div class="dashboard-header">
+
+            <p class="tag">USER PAYMENT PORTAL</p>
+
+            <h1>Make a Secure Payment</h1>
+
+            <p>
+                Enter the transaction information below.
+                The system will analyze the transaction before completion.
+            </p>
+
+        </div>
+
+
+        <div class="payment-layout">
+
+
+            <section class="payment-card">
+
+                <h2>Payment Details</h2>
+
+                <form id="paymentForm">
+
+                    <label for="sender">
+                        Sender Account
+                    </label>
+
+                    <input
+                        type="text"
+                        id="sender"
+                        placeholder="XXXX1234"
+                        required
+                    >
+
+
+                    <label for="receiver">
+                        Receiver Account
+                    </label>
+
+                    <input
+                        type="text"
+                        id="receiver"
+                        placeholder="XXXX5678"
+                        required
+                    >
+
+
+                    <label for="amount">
+                        Amount
+                    </label>
+
+                    <input
+                        type="number"
+                        id="amount"
+                        placeholder="Enter amount"
+                        min="1"
+                        required
+                    >
+
+
+                    <label for="location">
+                        Transaction Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="Vijayawada"
+                        required
+                    >
+
+
+                    <label for="paymentMethod">
+                        Payment Method
+                    </label>
+
+                    <select id="paymentMethod">
+
+                        <option value="UPI">
+                            UPI
+                        </option>
+
+                        <option value="CARD">
+                            Debit / Credit Card
+                        </option>
+
+                        <option value="NETBANKING">
+                            Net Banking
+                        </option>
+
+                    </select>
+
+
+                    <button
+                        type="submit"
+                        class="btn primary-btn full-btn"
+                    >
+                        Analyze Payment
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <section class="security-card">
+
+                <div class="security-icon">
+                    Q
+                </div>
+
+                <h2>Security Analysis</h2>
+
+                <p>
+                    Before the payment is completed,
+                    the transaction will be checked for
+                    potentially suspicious characteristics.
+                </p>
+
+                <div class="security-point">
+                    ✓ Transaction analysis
+                </div>
+
+                <div class="security-point">
+                    ✓ Fraud-risk assessment
+                </div>
+
+                <div class="security-point">
+                    ✓ User verification
+                </div>
+
+                <div class="security-point">
+                    ✓ Admin notification
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- Verification Popup -->
+
+    <div
+        id="verificationModal"
+        class="modal hidden"
+    >
+
+        <div class="modal-content">
+
+            <button
+                class="close-btn"
+                onclick="closeVerification()"
+            >
+                ×
+            </button>
+
+            <div class="warning-icon">
+                !
+            </div>
+
+            <h2>Verify This Transaction</h2>
+
+            <p>
+                Please check the transaction details carefully.
+            </p>
+
+
+            <div class="transaction-details">
+
+                <p>
+                    <strong>Transaction ID:</strong>
+                    <span id="transactionId"></span>
+                </p>
+
+                <p>
+                    <strong>Amount:</strong>
+                    ₹<span id="transactionAmount"></span>
+                </p>
+
+                <p>
+                    <strong>Receiver:</strong>
+                    <span id="transactionReceiver"></span>
+                </p>
+
+                <p>
+                    <strong>Location:</strong>
+                    <span id="transactionLocation"></span>
+                </p>
+
+                <p>
+                    <strong>Risk:</strong>
+                    <span id="transactionRisk"></span>
+                </p>
+
+            </div>
+
+
+            <h3>
+                Did you initiate this transaction?
+            </h3>
+
+
+            <div class="verification-buttons">
+
+                <button
+                    class="btn confirm-btn"
+                    onclick="confirmTransaction()"
+                >
+                    YES, IT'S ME
+                </button>
+
+
+                <button
+                    class="btn block-btn"
+                    onclick="blockTransaction()"
+                >
+                    NO, IT'S NOT ME
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
